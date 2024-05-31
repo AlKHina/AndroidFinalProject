@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_height="130dp"
+        android:layout_width="130dp"
+        android:padding="10dp"
+        android:id="@+id/ivGallery"
+        android:src="@mipmap/ic_launcher_round"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:gravity="center"
+        android:textColor="#E6E6E6"
+        android:textSize="19dp"
+        android:text="title"/>
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/description"
+        android:gravity="center"
+        android:textColor="#E6E6E6"
+        android:textSize="19dp"
+        android:text="description, description, description, description."/>
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/price"
+        android:gravity="center"
+        android:textColor="#E6E6E6"
+        android:textSize="19dp"
+        android:text="$220000"/>
+
+</LinearLayout>

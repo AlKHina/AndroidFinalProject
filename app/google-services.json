@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "69262191074",
-    "project_id": "alexxx-dc5b1",
-    "storage_bucket": "alexxx-dc5b1.appspot.com"
+    "project_number": "820441606734",
+    "project_id": "androidfinalproject-7721b",
+    "storage_bucket": "androidfinalproject-7721b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:69262191074:android:41b83165aa15e4169531bb",
+        "mobilesdk_app_id": "1:820441606734:android:389efb74bb7da5b38a711f",
         "android_client_info": {
           "package_name": "com.example.test"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCU6-_X4ovYm8kj5B6eW9oCo5h-3sPcLHA"
+          "current_key": "AIzaSyCWY5F8eLrZ5wfeAu0oyadEBIqf23zKC2k"
         }
       ],
       "services": {

@@ -99,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         auth.setUsername(nickname);
                                         auth.setUser(user);
                                         auth.setKey(key);
-                                        Intent intent = new Intent(SignUpActivity.this, ChatActivity.class);
+                                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }

@@ -3,6 +3,8 @@ package com.example.test;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
 public class AuthClass {
     private Context context;
     private static String username = null;
@@ -49,7 +51,7 @@ public class AuthClass {
         SharedPreferences sp = context.getSharedPreferences("data",Context.MODE_PRIVATE);
         Gson gson = new  Gson();
         String json = sp.getString("user","");
-        return gson.fromJson(json, User.class);
+        return gson.fromJson(json, UserClass.class);
     }
 
     public  void setUser(UserClass user) {
@@ -61,6 +63,4 @@ public class AuthClass {
         edit.putString("user", json);
         edit.apply();
     }
-}
-
 }

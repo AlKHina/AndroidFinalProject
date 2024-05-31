@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".SignUpActivity"
+ <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
     android:padding="15dp"
     android:background="#292929">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"/>
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -36,7 +41,10 @@ tools:context=".SignUpActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="имя/фамилия человека"
-        android:layout_margin="50dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
         android:background="@drawable/edit_text_bg"/>
 
     <TextView
@@ -51,7 +59,10 @@ tools:context=".SignUpActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ваша почта"
-        android:layout_margin="50dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
         android:background="@drawable/edit_text_bg"/>
 
     <TextView
@@ -66,7 +77,10 @@ tools:context=".SignUpActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="******"
-        android:layout_margin="50dp"
+        android:layout_marginTop="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
         android:background="@drawable/edit_text_bg"/>
 
     <TextView
@@ -92,7 +106,8 @@ tools:context=".SignUpActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Создать аккаунт"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:outlineAmbientShadowColor="#5651AD"/>
 
     <TextView
         android:id="@+id/textViewEnterAkk"
