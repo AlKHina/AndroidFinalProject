@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="#292929">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,20 +40,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerInParent="true"
         android:gravity="center"
-        android:layout_below="@id/menu_from_the_top">
+        android:layout_centerInParent="true">
 
-        <GridView
-            android:id="@+id/gv"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_weight="1"
-            android:numColumns="2"
-            tools:listitem="@layout/item_public"
-            android:scrollbars="none"/>
+            android:text="Выберите чтобы опубликовать поси."
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonDialogCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Перейти в камеру"
+                android:layout_marginRight="15dp"/>
+
+            <Button
+                android:id="@+id/ButtonDialogHareleya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Перейти в гарелею"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <RelativeLayout
