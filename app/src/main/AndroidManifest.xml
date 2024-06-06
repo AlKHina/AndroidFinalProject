@@ -12,14 +12,13 @@
         android:theme="@style/Theme.Test"
         tools:targetApi="31">
         <activity
-            android:name=".AlertDialogActivity"
+            android:name=".ToPublishActivity"
             android:exported="false" />
-        <activity
-            android:name=".CameraActivity"
-            android:exported="false" />
+
         <activity
             android:name=".AddingPublicationsActivity"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".OpisanieActivity"
             android:exported="false" />

@@ -11,13 +11,20 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<OpisanieClass> cars;
+    ArrayList<CarClass> cars;
     MainAdapter adapter;
     GridView gridView;
     String[] numberWord = {"One","Two","tree"};
@@ -31,74 +38,26 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MainAdapter(this, cars);
         gridView.setAdapter(adapter);
         loadCars();
+        menuListner();
     }
     private void loadCars(){
-        cars.add(new OpisanieClass(getResources().getDrawable(R.drawable.toyota_camry_70),"toyota camry 70","Объем               Мощность \n" +
-                "2.0 л                    178 л.с.\n" +
-                "\n" +
-                "Коробка            Тип двигателя\n" +
-                "Вариатор          бензиновый \n" +
-                "\n" +
-                "Топливо            Привод\n" +
-                "АИ-95                передний\n" +
-                "\n" +
-                "Расход               Кл автомобиля \n" +
-                "5.7 л                    D ","$220000" , "+7 (777) 777-77-77", "Седан D-класса, передний и полный привод. Вариатор. Бензиновые и гибридные двигатели мощностью от 173 до 232 лошадиных сил."));
-        cars.add(new OpisanieClass(getResources().getDrawable(R.drawable.toyota_camry_70),"toyota camry 70","Объем               Мощность \n" +
-                "2.0 л                    178 л.с.\n" +
-                "\n" +
-                "Коробка            Тип двигателя\n" +
-                "Вариатор          бензиновый \n" +
-                "\n" +
-                "Топливо            Привод\n" +
-                "АИ-95                передний\n" +
-                "\n" +
-                "Расход               Кл автомобиля \n" +
-                "5.7 л                    D ","$220000" , "+7 (777) 777-77-77", "Седан D-класса, передний и полный привод. Вариатор. Бензиновые и гибридные двигатели мощностью от 173 до 232 лошадиных сил."));
-        cars.add(new OpisanieClass(getResources().getDrawable(R.drawable.toyota_camry_70),"toyota camry 70","Объем               Мощность \n" +
-                "2.0 л                    178 л.с.\n" +
-                "\n" +
-                "Коробка            Тип двигателя\n" +
-                "Вариатор          бензиновый \n" +
-                "\n" +
-                "Топливо            Привод\n" +
-                "АИ-95                передний\n" +
-                "\n" +
-                "Расход               Кл автомобиля \n" +
-                "5.7 л                    D ","$220000" , "+7 (777) 777-77-77", "Седан D-класса, передний и полный привод. Вариатор. Бензиновые и гибридные двигатели мощностью от 173 до 232 лошадиных сил."));
-        cars.add(new OpisanieClass(getResources().getDrawable(R.drawable.toyota_camry_70),"toyota camry 70","Объем               Мощность \n" +
-                "2.0 л                    178 л.с.\n" +
-                "\n" +
-                "Коробка            Тип двигателя\n" +
-                "Вариатор          бензиновый \n" +
-                "\n" +
-                "Топливо            Привод\n" +
-                "АИ-95                передний\n" +
-                "\n" +
-                "Расход               Кл автомобиля \n" +
-                "5.7 л                    D ","$220000" , "+7 (777) 777-77-77", "Седан D-класса, передний и полный привод. Вариатор. Бензиновые и гибридные двигатели мощностью от 173 до 232 лошадиных сил."));
-        cars.add(new OpisanieClass(getResources().getDrawable(R.drawable.toyota_camry_70),"toyota camry 70","Объем               Мощность \n" +
-                "2.0 л                    178 л.с.\n" +
-                "\n" +
-                "Коробка            Тип двигателя\n" +
-                "Вариатор          бензиновый \n" +
-                "\n" +
-                "Топливо            Привод\n" +
-                "АИ-95                передний\n" +
-                "\n" +
-                "Расход               Кл автомобиля \n" +
-                "5.7 л                    D ","$220000" , "+7 (777) 777-77-77", "Седан D-класса, передний и полный привод. Вариатор. Бензиновые и гибридные двигатели мощностью от 173 до 232 лошадиных сил."));
-        cars.add(new OpisanieClass(getResources().getDrawable(R.drawable.toyota_camry_70),"toyota camry 70","Объем               Мощность \n" +
-                "2.0 л                    178 л.с.\n" +
-                "\n" +
-                "Коробка            Тип двигателя\n" +
-                "Вариатор          бензиновый \n" +
-                "\n" +
-                "Топливо            Привод\n" +
-                "АИ-95                передний\n" +
-                "\n" +
-                "Расход               Кл автомобиля \n" +
-                "5.7 л                    D ","$220000" , "+7 (777) 777-77-77", "Седан D-класса, передний и полный привод. Вариатор. Бензиновые и гибридные двигатели мощностью от 173 до 232 лошадиных сил."));
+        FirebaseDatabase.getInstance().getReference().child("publications").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot userPublichions: snapshot.getChildren()){
+                    for (DataSnapshot publichionssnapshot:userPublichions.getChildren()){
+                        CarClass publicahins = publichionssnapshot.getValue(CarClass.class);
+                        cars.add(publicahins);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         assignAdapter();
 
     }
@@ -108,17 +67,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this,OpisanieActivity.class);
-                OpisanieClass pickedAnimal = cars.get(position);
-                intent.putExtra("name", pickedAnimal.getName());
-                intent.putExtra("opisanie", pickedAnimal.getOpisanie());
-                Bitmap bitmap= ((BitmapDrawable)pickedAnimal.getImage()).getBitmap();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG,70,stream);
-                String imgString = android.util.Base64.encodeToString(stream.toByteArray(), Base64.NO_WRAP);
-                intent.putExtra("foto", imgString);
+                CarClass pickedCar = cars.get(position);
+                intent.putExtra("name", pickedCar.getNameCar());
+                intent.putExtra("opisanie", pickedCar.getDescriptionCar());
+                intent.putExtra("foto", pickedCar.getFoto());
                 startActivity(intent);
             }
         });
 
+    }
+    private void menuListner(){
+        findViewById(R.id.To_add_an_advert).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,AddingPublicationsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

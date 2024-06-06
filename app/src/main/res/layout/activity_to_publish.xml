@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#292929">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_from_the_top"
+        android:orientation="horizontal"
+        android:background="#1C2120">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/messages"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="360sp"
+            android:layout_marginBottom="20sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+
+        android:layout_below="@id/menu_from_the_top">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Mарка машины:"
+                   android:layout_marginTop="60dp"
+                   android:layout_marginStart="10dp"
+                   android:textColor="#E6E6E6" />
+
+               <EditText
+                   android:id="@+id/EditTextNameCar"
+                   android:layout_width="150dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="10dp"
+                   android:maxLines="1"
+                   android:layout_marginTop="30dp"
+                   android:backgroundTint="#E6E6E6"
+                   android:hint="Название"
+                   android:textColor="#E6E6E6" />
+           </LinearLayout>
+
+            <ImageView
+                android:id="@+id/foto"
+                android:layout_width="182dp"
+                android:layout_height="182dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@mipmap/ic_launcher_round" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="180dp"
+            android:layout_marginBottom="30dp"
+            android:text="Опиcание:"
+            android:textColor="#E6E6E6" />
+        <EditText
+        android:id="@+id/EditTextDescriptionCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:maxLines="4"
+        android:textColor="#E6E6E6"
+        android:backgroundTint="#E6E6E6"
+        android:hint="Напишите описание своей машине "/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Цена:"
+        android:textColor="#E6E6E6"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="30dp" />
+
+        <EditText
+            android:id="@+id/EditTextPriceCar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="170dp"
+            android:backgroundTint="#E6E6E6"
+            android:hint="$$$"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:textColor="#E6E6E6" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_from_the_bottom"
+        android:orientation="horizontal"
+        android:background="#1C2120"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/ButtonPublish"
+            android:layout_width="221dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#535353"
+            android:text="Опубликовать" />
+    </RelativeLayout>
+</RelativeLayout>

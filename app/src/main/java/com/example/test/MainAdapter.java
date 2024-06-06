@@ -2,6 +2,9 @@ package com.example.test;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +15,18 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainAdapter extends ArrayAdapter<OpisanieClass> {
+public class MainAdapter extends ArrayAdapter<CarClass> {
     Context context;
-    ArrayList<OpisanieClass> item;
+    ArrayList<CarClass> item;
 
-    public MainAdapter(Context context, ArrayList<OpisanieClass> item) {
+    public MainAdapter(Context context, ArrayList<CarClass> item) {
         super(context, R.layout.item_public, item);
         this.context = context;
         this.item = item;
     }
     @Override
     public View getView(int position, View convertView,  ViewGroup parent) {
-        OpisanieClass i = this.item.get(position);
+        CarClass i = this.item.get(position);
         LayoutInflater inflater = LayoutInflater.from(this.context);
         @SuppressLint({"ViewHolder", "InflateParams"}) View v = inflater.inflate(R.layout.item_public, null, false);
 
@@ -32,10 +35,12 @@ public class MainAdapter extends ArrayAdapter<OpisanieClass> {
         TextView description = v.findViewById(R.id.description);
         TextView price = v.findViewById(R.id.price);
 
-        name.setText(i.getName());
-        image.setImageDrawable(i.getImage());
-        description.setText(i.getMini_opisanie());
-        price.setText(i.getPrice());
+        name.setText(i.getNameCar());
+        byte[] decodedString = android.util.Base64.decode(i.getFoto(), Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        image.setImageBitmap(decodedByte);
+        description.setText(i.getDescriptionCar());
+        price.setText(i.getPriceCar());
 
         return v;
     }
