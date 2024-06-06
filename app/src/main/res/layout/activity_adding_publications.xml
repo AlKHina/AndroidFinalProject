@@ -44,9 +44,10 @@
         android:layout_centerInParent="true">
 
         <TextView
+            android:textColor="#E6E6E6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выберите чтобы опубликовать поси."
+            android:text="Выберите чтобы опубликовать пост"
             />
 
         <LinearLayout
@@ -62,10 +63,10 @@
                 android:layout_marginRight="15dp"/>
 
             <Button
-                android:id="@+id/ButtonDialogHareleya"
+                android:id="@+id/ButtonDialogGallery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Перейти в гарелею"/>
+                android:text="Перейти в галерею"/>
 
         </LinearLayout>
 
