@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<CarClass> cars;
     MainAdapter adapter;
     GridView gridView;
-    String[] numberWord = {"One","Two","tree"};
+    String[] numberWord = {"One", "Two", "tree"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +40,17 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(adapter);
         loadCars();
         menuListner();
+        searchListner();
+        likeListner();
+        userListner();
     }
-    private void loadCars(){
+
+    private void loadCars() {
         FirebaseDatabase.getInstance().getReference().child("publications").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot userPublichions: snapshot.getChildren()){
-                    for (DataSnapshot publichionssnapshot:userPublichions.getChildren()){
+                for (DataSnapshot userPublichions : snapshot.getChildren()) {
+                    for (DataSnapshot publichionssnapshot : userPublichions.getChildren()) {
                         CarClass publicahins = publichionssnapshot.getValue(CarClass.class);
                         cars.add(publicahins);
                     }
@@ -61,12 +66,13 @@ public class MainActivity extends AppCompatActivity {
         assignAdapter();
 
     }
-    private void assignAdapter(){
-      adapter.notifyDataSetChanged();
+
+    private void assignAdapter() {
+        adapter.notifyDataSetChanged();
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this,OpisanieActivity.class);
+                Intent intent = new Intent(MainActivity.this, OpisanieActivity.class);
                 CarClass pickedCar = cars.get(position);
                 intent.putExtra("name", pickedCar.getNameCar());
                 intent.putExtra("opisanie", pickedCar.getDescriptionCar());
@@ -76,11 +82,39 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private void menuListner(){
+
+    private void menuListner() {
         findViewById(R.id.To_add_an_advert).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,AddingPublicationsActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddingPublicationsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void searchListner() {
+        findViewById(R.id.search_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void likeListner() {
+        findViewById(R.id.liked_it_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LikeActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void userListner() {
+        findViewById(R.id.User_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });
