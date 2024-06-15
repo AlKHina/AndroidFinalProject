@@ -1,10 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivity">
+    tools:context=".MainActivity"
+    android:background="#292929">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_from_the_top"
+        android:orientation="horizontal"
+        android:background="#1C2120">
+        <ImageView
+            android:id="@+id/message_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/messages"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="360sp"
+            android:layout_marginBottom="20sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp">
+
+        <ImageView
+            android:id="@+id/change_ava"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginBottom="5dp"
+            android:text="Профиль"
+            android:textColor="#E2E2E5" />
+
+        <TextView
+            android:id="@+id/change_nick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ник"
+            android:textColor="#E2E2E5"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="5dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/arrow_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_search"
+        android:padding="5dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/change_EMAIL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Изменить EMAIL"
+            android:textColor="#E2E2E5" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="310dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/arrow_right_2"
+            app:tint="#E2E2E5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/arrow_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_search"
+        android:padding="5dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/change_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Изменить пароль"
+            android:textColor="#E2E2E5" />
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/arrow_right_2"
+            app:tint="#E2E2E5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/arrow_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_search"
+        android:padding="5dp"
+        android:layout_marginTop="510dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/change_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Изменить номер"
+            android:textColor="#E2E2E5" />
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/arrow_right_2"
+            app:tint="#E2E2E5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/arrow_publications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_search"
+        android:padding="5dp"
+        android:layout_marginTop="630dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/your_publications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="Ваши публикации"
+            android:textColor="#E2E2E5" />
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/arrow_right_2"
+            app:tint="#E2E2E5"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_from_the_bottom"
+        android:orientation="horizontal"
+        android:background="#1C2120"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="360sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_search_24"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="270sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/To_add_an_advert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_square"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="190sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/liked_it_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/heart"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="110sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/User_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_user"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+</RelativeLayout>

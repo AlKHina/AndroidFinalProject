@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         searchListner();
         likeListner();
         userListner();
+        messageListner();
     }
 
     private void loadCars() {
@@ -115,6 +116,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    private void messageListner(){
+        findViewById(R.id.message_button).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ChatListActivity.class);
                 startActivity(intent);
             }
         });

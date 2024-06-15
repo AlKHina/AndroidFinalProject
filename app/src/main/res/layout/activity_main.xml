@@ -16,6 +16,7 @@
         android:orientation="horizontal"
         android:background="#1C2120">
         <ImageView
+            android:id="@+id/message_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/messages"
@@ -64,46 +65,13 @@
         android:background="#1C2120"
         android:layout_alignParentBottom="true">
         <ImageView
-            android:id="@+id/User_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/profile_user"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="20sp"
-            android:layout_marginEnd="20sp"
-            android:layout_marginBottom="20sp"
-            app:tint="#E2E2E5"
-            android:layout_alignParentRight="true"/>
-        <ImageView
-            android:id="@+id/liked_it_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/heart"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="20sp"
-            android:layout_marginEnd="100sp"
-            android:layout_marginBottom="20sp"
-            app:tint="#E2E2E5"
-            android:layout_alignParentRight="true"/>
-        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/home"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="360sp"
-            android:layout_marginBottom="20sp"
-            app:tint="#E2E2E5"
-            android:layout_alignParentRight="true"/>
-        <ImageView
-            android:id="@+id/To_add_an_advert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add_square"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="20sp"
-            android:layout_marginEnd="200sp"
-            android:layout_marginBottom="20sp"
             app:tint="#E2E2E5"
             android:layout_alignParentRight="true"/>
         <ImageView
@@ -111,13 +79,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_search_24"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="20sp"
-            android:layout_marginEnd="280sp"
-            android:layout_marginBottom="20sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="270sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/To_add_an_advert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_square"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="190sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/liked_it_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/heart"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="110sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/User_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_user"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             app:tint="#E2E2E5"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>
-
 </RelativeLayout>

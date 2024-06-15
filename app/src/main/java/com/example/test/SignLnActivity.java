@@ -75,7 +75,7 @@ public class SignLnActivity extends AppCompatActivity {
                                 }
                                 if (password.equals(account.getPass())) {
                                     auth.setUser(account);
-                                    auth.setUsername(account.getName());
+                                    auth.setUsername(account.getNick());
                                     auth.setKey(account.getKey());
 
                                     Intent intent = new Intent(SignLnActivity.this, MainActivity.class);

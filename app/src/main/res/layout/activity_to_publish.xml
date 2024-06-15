@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:maxLines="4"
         android:textColor="#E6E6E6"
         android:backgroundTint="#E6E6E6"
@@ -107,17 +107,40 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="180dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="5dp" />
 
         <EditText
             android:id="@+id/EditTextPriceCar"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="170dp"
             android:backgroundTint="#E6E6E6"
             android:hint="$$$"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:textColor="#E6E6E6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Номер телефона:"
+            android:textColor="#E6E6E6"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="180dp"
+            android:layout_marginBottom="5dp" />
+
+        <EditText
+            android:id="@+id/EditTextNumber"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="170dp"
+            android:backgroundTint="#E6E6E6"
+            android:hint="Ваш номер"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:textColor="#E6E6E6" />

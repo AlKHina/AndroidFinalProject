@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="Вход в аккаунт"
             android:layout_marginTop="40dp"
-            android:outlineAmbientShadowColor="#5651AD"/>
+            android:outlineAmbientShadowColor="#4B4B4D"/>
 
         <TextView
             android:id="@+id/TextViewForgotPassword"

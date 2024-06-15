@@ -4,19 +4,14 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,16 +28,18 @@ public class ChatActivity extends AppCompatActivity {
     EditText chatEditText;
     private DatabaseReference db;
     DatabaseReference messagesReference;
-    ArrayList<ChatClass> chat;
-    ChatAdapter adapter;
+    ArrayList<MessageClass> chat;
+    MessageAdapter adapter;
+    AuthClass auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        auth = new AuthClass(getApplicationContext());
 
         chat = new ArrayList<>();
-        adapter = new ChatAdapter(this, chat);
+        adapter = new MessageAdapter(this, chat);
 
         db = FirebaseDatabase.getInstance().getReference();
         messagesReference = db.child("messages");
@@ -69,9 +66,8 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!chatEditText.getText().toString().isEmpty()) {
                     String massage = chatEditText.getText().toString();
-                    ChatClass message = new ChatClass(massage, System.currentTimeMillis());
                     String key = messagesReference.push().getKey();
-                    message.setKey(key);
+                    MessageClass message = new MessageClass(massage,key, System.currentTimeMillis(), auth.getKey());
                     messagesReference.child(key).setValue(message);
                     chatEditText.setText("");
                 }
@@ -87,7 +83,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chat.clear();
                 for (DataSnapshot msgSnapshot : snapshot.getChildren()) {
-                    ChatClass message = msgSnapshot.getValue(ChatClass.class);
+                    MessageClass message = msgSnapshot.getValue(MessageClass.class);
                     chat.add(message);
                 }
                 adapter.notifyDataSetChanged();
@@ -105,7 +101,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder deleteDialog = new AlertDialog.Builder(ChatActivity.this);
-                ChatClass pickedMessage = chat.get(position);
+                MessageClass pickedMessage = chat.get(position);
                 String text = "сообщение:" + pickedMessage.getMessage();
                 deleteDialog.setTitle("вы действительно хотите удалить сообщение?");
                 deleteDialog.setMessage(text);

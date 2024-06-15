@@ -29,7 +29,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class ToPublishActivity extends AppCompatActivity {
-    private EditText EditTextNameCar,EditTextDescriptionCar,EditTextPriceCar;
+    private EditText EditTextNameCar,EditTextDescriptionCar,EditTextPriceCar,EditTextNumber;
+    private Button ButtonPublish;
+    private ImageView foto;
     private AuthClass auth;
     DatabaseReference db;
     String fotoString;
@@ -38,22 +40,24 @@ public class ToPublishActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_publish);
+
         auth = new AuthClass(getApplicationContext());
         db = FirebaseDatabase.getInstance().getReference();
         publications = db.child("publications");
 
-        ImageView carfoto = findViewById(R.id.foto);
-        Button buttonpublish = findViewById(R.id.ButtonPublish);
+        foto = findViewById(R.id.foto);
+        ButtonPublish = findViewById(R.id.ButtonPublish);
         EditTextNameCar = findViewById(R.id.EditTextNameCar);
         EditTextDescriptionCar = findViewById(R.id.EditTextDescriptionCar);
         EditTextPriceCar = findViewById(R.id.EditTextPriceCar);
+        EditTextNumber = findViewById(R.id.EditTextNumber);
         transition();
 
         Intent returnIntent = getIntent();
         fotoString = returnIntent.getStringExtra("foto");
         byte[] decodedString = android.util.Base64.decode(fotoString, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        carfoto.setImageBitmap(decodedByte);
+        foto.setImageBitmap(decodedByte);
     }
     private void transition() {
         Button buttonpublish = findViewById(R.id.ButtonPublish);
@@ -65,6 +69,7 @@ public class ToPublishActivity extends AppCompatActivity {
                 String nameCar = EditTextNameCar.getText().toString();
                 String descriptionCar = EditTextDescriptionCar.getText().toString();
                 String priceCar = EditTextPriceCar.getText().toString();
+                String numberUser = EditTextNumber.getText().toString();
 
                 if (nameCar.isEmpty()){
                     isEverythingOK = false;
@@ -75,11 +80,14 @@ public class ToPublishActivity extends AppCompatActivity {
                 } else if (priceCar.isEmpty()) {
                     isEverythingOK = false;
                     EditTextPriceCar.setError("Это поле осталось пустым");
+                } else if (numberUser.isEmpty()) {
+                    isEverythingOK = false;
+                    EditTextNumber.setError("Это поле осталось пустым");
                 }
 
                 if (isEverythingOK) {
                     String key = publications.child(auth.getKey()).push().getKey();
-                    CarClass car = new CarClass(nameCar, descriptionCar, priceCar,fotoString, key);
+                    CarClass car = new CarClass(key, auth.getKey(), nameCar,descriptionCar, priceCar,numberUser,fotoString);
                     publications.child(auth.getKey()).child(key).setValue(car).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
