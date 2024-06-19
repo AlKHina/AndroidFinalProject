@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,11 +22,20 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<CarClass> cars;
     MainAdapter adapter;
     GridView gridView;
+    AuthClass auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        auth = new AuthClass(getApplicationContext());
+        if (auth.getUser() == null) {
+            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
 
         gridView = findViewById(R.id.gv);
 
@@ -44,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("publications").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                cars.clear();
                 for (DataSnapshot userPublication : snapshot.getChildren()) {
                     for (DataSnapshot publicationsSnapshot : userPublication.getChildren()) {
                         CarClass Publications = publicationsSnapshot.getValue(CarClass.class);
@@ -73,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("descriptionCar", pickedCar.getDescriptionCar());
                 intent.putExtra("photo", pickedCar.getPhoto());
                 intent.putExtra("key", pickedCar.getKey());
+                intent.putExtra("phone", pickedCar.getNumberUser());
+                intent.putExtra("price", pickedCar.getPriceCar());
                 startActivity(intent);
             }
         });
@@ -122,5 +135,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            loadCars();
+        }
     }
 }

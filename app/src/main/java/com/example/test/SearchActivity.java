@@ -75,6 +75,8 @@ public class SearchActivity extends AppCompatActivity {
                                     intent.putExtra("descriptionCar", pickedCar.getDescriptionCar());
                                     intent.putExtra("key",pickedCar.getKey());
                                     intent.putExtra("photo", pickedCar.getPhoto());
+                                    intent.putExtra("price", pickedCar.getPriceCar());
+                                    intent.putExtra("phone", pickedCar.getNumberUser());
                                     startActivity(intent);
                                 }
                             });

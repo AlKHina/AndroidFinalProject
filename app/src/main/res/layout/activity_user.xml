@@ -56,9 +56,10 @@
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:src="@mipmap/ic_launcher_round" />
+            android:src="@drawable/userdefault" />
 
         <TextView
+            android:id="@+id/user_nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -70,14 +71,16 @@
 
         <TextView
             android:id="@+id/change_nick"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ник"
+            android:text="Изменить ник"
             android:textColor="#E2E2E5"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="140dp"
             android:layout_marginTop="150dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:drawableRight="@drawable/ic_plus"
+            android:drawableTint="#7BC1F1"/>
     </RelativeLayout>
 
     <RelativeLayout

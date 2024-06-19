@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 
 public class UserActivity extends AppCompatActivity {
 
-    LinearLayout arrow_email, arrow_password, arrow_number, arrow_publications;
+    RelativeLayout arrow_email, arrow_password, arrow_number, arrow_publications;
     TextView change_nick;
     ImageView change_ava;
     AlertDialog dialog;
@@ -49,6 +50,8 @@ public class UserActivity extends AppCompatActivity {
 
         auth = new AuthClass(getApplicationContext());
 
+        TextView username = findViewById(R.id.user_nickname);
+        username.setText(auth.getUser().getNick());
         change_ava = findViewById(R.id.change_ava);
         arrow_email = findViewById(R.id.arrow_email);
         arrow_password = findViewById(R.id.arrow_password);
@@ -71,10 +74,10 @@ public class UserActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
                 View alertView = getLayoutInflater().inflate(R.layout.alert_dialog_nick, null);
                 EditText nameEdetText = alertView.findViewById(R.id.newNick);
-                Button okButton = alertView.findViewById(R.id.changeNickOK);
+                LinearLayout okButton = alertView.findViewById(R.id.changeNickOK);
                 String curentName = auth.getUsername();
                 nameEdetText.setText(curentName);
-                Button cancellationButton = alertView.findViewById(R.id.changeNickCancellation);
+                LinearLayout cancellationButton = alertView.findViewById(R.id.changeNickCancellation);
 
                 cancellationButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -120,10 +123,10 @@ public class UserActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
                 View alertView = getLayoutInflater().inflate(R.layout.alert_dialog_email, null);
                 EditText emailEdetText = alertView.findViewById(R.id.newEmail);
-                Button okButton = alertView.findViewById(R.id.changeEmailOK);
+                LinearLayout okButton = alertView.findViewById(R.id.changeEmailOK);
                 String curentEmail = auth.getUser().getEmail();
                 emailEdetText.setText(curentEmail);
-                Button cancellationButton = alertView.findViewById(R.id.changeEmailCancellation);
+                LinearLayout cancellationButton = alertView.findViewById(R.id.changeEmailCancellation);
 
                 cancellationButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -169,10 +172,9 @@ public class UserActivity extends AppCompatActivity {
                 View alertView = getLayoutInflater().inflate(R.layout.alert_dialog_password, null);
                 EditText newPasswordEdetText = alertView.findViewById(R.id.newPassword);
                 EditText confirmPasswordEdetText = alertView.findViewById(R.id.confirmNewPassword);
-                Button okButton = alertView.findViewById(R.id.changePasswordOK);
+                LinearLayout okButton = alertView.findViewById(R.id.changePasswordOK);
                 String curentPassword = auth.getUser().getPass();
-                newPasswordEdetText.setText(curentPassword);
-                Button cancellationButton = alertView.findViewById(R.id.changePasswordCancellation);
+                LinearLayout cancellationButton = alertView.findViewById(R.id.changePasswordCancellation);
 
                 cancellationButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -223,10 +225,10 @@ public class UserActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
                 View alertView = getLayoutInflater().inflate(R.layout.alert_dialog_numder, null);
                 EditText numberEdetText = alertView.findViewById(R.id.newNumber);
-                Button okButton = alertView.findViewById(R.id.changeNumberOK);
+                LinearLayout okButton = alertView.findViewById(R.id.changeNumberOK);
                 String curentNumber = auth.getUser().getNumber();
                 numberEdetText.setText(curentNumber);
-                Button cancellationButton = alertView.findViewById(R.id.changeNumberCancellation);
+                LinearLayout cancellationButton = alertView.findViewById(R.id.changeNumberCancellation);
                 cancellationButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

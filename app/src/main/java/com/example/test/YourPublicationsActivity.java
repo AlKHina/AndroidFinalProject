@@ -32,6 +32,7 @@ public class YourPublicationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_publications);
 
+        auth = new AuthClass(getApplicationContext());
         gridView = findViewById(R.id.gv);
 
         cars = new ArrayList<>();

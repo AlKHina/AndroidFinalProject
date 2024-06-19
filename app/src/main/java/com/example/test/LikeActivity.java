@@ -21,6 +21,7 @@ public class LikeActivity extends AppCompatActivity {
 
     GridView gridView;
     ArrayList<CarClass> cars;
+    ArrayList<String> favoriteClasses = new ArrayList<>();
     MainAdapter adapter;
     private AuthClass auth;
     DatabaseReference dr;
@@ -29,6 +30,7 @@ public class LikeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_like);
+        auth = new AuthClass(getApplicationContext());
         gridView = findViewById(R.id.gv);
 
         cars = new ArrayList<>();
@@ -40,25 +42,47 @@ public class LikeActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                favoriteClasses.clear();
                 for (DataSnapshot publichionssnapshot : snapshot.getChildren()) {
-                    CarClass publicahins = publichionssnapshot.getValue(CarClass.class);
-                    cars.add(publicahins);
+                    FavoriteClass publicahins = publichionssnapshot.getValue(FavoriteClass.class);
+                    favoriteClasses.add(publicahins.getCarKey());
                 }
-                MainAdapter adapter = new MainAdapter(LikeActivity.this, cars);
-                gridView.setAdapter(adapter);
-                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(LikeActivity.this, DescriptionActivity.class);
-                        CarClass pickedCar = cars.get(position);
-                        intent.putExtra("nameCar", pickedCar.getNameCar());
-                        intent.putExtra("descriptionCar", pickedCar.getDescriptionCar());
-                        intent.putExtra("key",pickedCar.getKey());
-                        intent.putExtra("photo", pickedCar.getPhoto());
-                        startActivity(intent);
-                    }
-                });
+                FirebaseDatabase.getInstance().getReference()
+                        .child("publications")
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                cars.clear();
+                                for (DataSnapshot carSnapshot : dataSnapshot.getChildren()) {
+                                    for (DataSnapshot publicationSnapshot : carSnapshot.getChildren()) {
+                                        if (favoriteClasses.contains(publicationSnapshot.getValue(CarClass.class).getKey())) {
+                                            cars.add(publicationSnapshot.getValue(CarClass.class));
+                                        }
+                                    }
+                                }
+                                MainAdapter adapter = new MainAdapter(LikeActivity.this, cars);
+                                gridView.setAdapter(adapter);
+                                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        Intent intent = new Intent(LikeActivity.this, DescriptionActivity.class);
+                                        CarClass pickedCar = cars.get(position);
+                                        intent.putExtra("nameCar", pickedCar.getNameCar());
+                                        intent.putExtra("descriptionCar", pickedCar.getDescriptionCar());
+                                        intent.putExtra("key",pickedCar.getKey());
+                                        intent.putExtra("photo", pickedCar.getPhoto());
+                                        intent.putExtra("phone", pickedCar.getNumberUser());
+                                        intent.putExtra("price", pickedCar.getPriceCar());
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
             }
 
             @Override

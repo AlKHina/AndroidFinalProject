@@ -11,6 +11,9 @@ public class CarClass {
     private String photo;
     private String miniDescription;
 
+    public CarClass() {
+    }
+
     public CarClass(String key, String ownerKey, String nameCar, String descriptionCar, String priceCar, String numberUser, String photo, String miniDescription) {
         this.key = key;
         this.ownerKey = ownerKey;

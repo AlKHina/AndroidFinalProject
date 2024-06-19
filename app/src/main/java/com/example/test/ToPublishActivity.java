@@ -59,7 +59,7 @@ public class ToPublishActivity extends AppCompatActivity {
         transition();
 
         Intent returnIntent = getIntent();
-        fotoString = returnIntent.getStringExtra("photo");
+        fotoString = returnIntent.getStringExtra("image");
         byte[] decodedString = android.util.Base64.decode(fotoString, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         photo.setImageBitmap(decodedByte);
@@ -100,6 +100,7 @@ public class ToPublishActivity extends AppCompatActivity {
                     publications.child(auth.getKey()).child(key).setValue(car).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+                            setResult(RESULT_OK);
                             finish();
                         }
                     });
