@@ -8,11 +8,12 @@ import com.google.gson.Gson;
 public class AuthClass {
     private Context context;
     private static String username = null;
+    private static String ava;
     private static UserClass user = null;
     private static String key = null;
     public AuthClass (Context context){this.context = context;
-    }
 
+    }
 
     public  String getUsername() {
         if (username == null){
@@ -27,6 +28,22 @@ public class AuthClass {
         SharedPreferences sp = context.getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("username", username);
+        editor.apply();
+    }
+
+    public  String getAva() {
+        if (ava == null){
+            SharedPreferences sp = context.getSharedPreferences("data", Context.MODE_PRIVATE);
+            ava = sp.getString("ava", null);
+        }
+        return ava;
+    }
+
+    public  void setAva(String ava) {
+        AuthClass.ava = ava;
+        SharedPreferences sp = context.getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("ava", ava);
         editor.apply();
     }
 

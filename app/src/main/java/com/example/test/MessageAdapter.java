@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MessageAdapter extends ArrayAdapter<MessageClass> {
+
     Context context;
     ArrayList<MessageClass> massage;
     View v;
@@ -28,6 +29,7 @@ public class MessageAdapter extends ArrayAdapter<MessageClass> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         MessageClass massages = massage.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         v = inflater.inflate(R.layout.item_message,null,false);

@@ -11,18 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.test.OpisanieClass;
-import com.example.test.R;
-
 import java.util.ArrayList;
 
-public class OpisanieAdapter extends ArrayAdapter<OpisanieClass> {
+public class DescriptionAdapter extends ArrayAdapter<DescriptionClass> {
 
     Context context;
-    ArrayList<OpisanieClass> cars;
+    ArrayList<DescriptionClass> cars;
     View v;
 
-    public OpisanieAdapter(@NonNull Context context, ArrayList<OpisanieClass> cars) {
+    public DescriptionAdapter(@NonNull Context context, ArrayList<DescriptionClass> cars) {
         super(context, R.layout.item_public, cars);
         this.context = context;
         this.cars = cars;
@@ -31,7 +28,8 @@ public class OpisanieAdapter extends ArrayAdapter<OpisanieClass> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        OpisanieClass cars = this.cars.get(position);
+
+        DescriptionClass cars = this.cars.get(position);
         LayoutInflater inflater = LayoutInflater.from(this.context);
         v = inflater.inflate(R.layout.item_public, null, false);
         ImageView imageView = v.findViewById(R.id.ivGallery);
@@ -41,10 +39,3 @@ public class OpisanieAdapter extends ArrayAdapter<OpisanieClass> {
         return v;
     }
 }
-// OpisanieClass cars = this.cars.get(position);
-//        LayoutInflater inflater = LayoutInflater.from(this.context);
-//        v = inflater.inflate(R.layout.item_public, null, false);
-//        ImageView imageView = v.findViewById(R.id.ivGallery);
-//        TextView textView = v.findViewById(R.id.title);
-//        imageView.setImageDrawable(cars.getImage());
-//        textView.setText(cars.getName());

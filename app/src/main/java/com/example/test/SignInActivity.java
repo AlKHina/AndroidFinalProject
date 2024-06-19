@@ -1,40 +1,32 @@
 package com.example.test;
 
-import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class SignLnActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     private EditText EditTextEmai, EditTextPassword;
-    private Button ButtonBtnNext;
-    private TextView TextViewForgotPassword;
+    private LinearLayout ButtonBtnNext;
     private AuthClass auth;
     private  String login, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_ln);
+        setContentView(R.layout.activity_sign_in);
+
         auth = new AuthClass(getApplicationContext());
 
         defineViews();
@@ -45,6 +37,7 @@ public class SignLnActivity extends AppCompatActivity {
         ButtonBtnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 boolean isEverythingOK = true;
 
                  login = EditTextEmai.getText().toString();
@@ -64,10 +57,12 @@ public class SignLnActivity extends AppCompatActivity {
                     EditTextEmai.setError("Логин не совпадает");
                 }
                 if (isEverythingOK) {
+
                     Query query = FirebaseDatabase.getInstance().getReference().child("accounts").orderByChild("login").equalTo(login);
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                             if (snapshot.hasChildren()) {
                                 UserClass account = new UserClass();
                                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
@@ -78,7 +73,7 @@ public class SignLnActivity extends AppCompatActivity {
                                     auth.setUsername(account.getNick());
                                     auth.setKey(account.getKey());
 
-                                    Intent intent = new Intent(SignLnActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 } else {
                                     EditTextPassword.setError("Пароль не правильный");
@@ -102,6 +97,5 @@ public class SignLnActivity extends AppCompatActivity {
         EditTextEmai = findViewById(R.id.EditTextEmail);
         EditTextPassword = findViewById(R.id.EditTextPassword);
         ButtonBtnNext = findViewById(R.id.ButtonBtnNext);
-        TextViewForgotPassword = findViewById(R.id.TextViewForgotPassword);
     }
 }

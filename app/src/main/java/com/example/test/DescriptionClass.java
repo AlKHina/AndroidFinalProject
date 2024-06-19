@@ -2,45 +2,46 @@ package com.example.test;
 
 import android.graphics.drawable.Drawable;
 
-public class OpisanieClass {
+public class DescriptionClass {
+
     private Drawable image;
     private String name;
-    private String opisanie;
+    private String description;
     private String price;
     private String number;
-    private String mini_opisanie;
+    private String miniDescription;
 
-    public OpisanieClass(Drawable image, String name, String opisanie, String price, String number, String mini_opisanie) {
+    public DescriptionClass(Drawable image, String name, String description, String price, String number, String miniDescription) {
         this.image = image;
         this.name = name;
-        this.opisanie = opisanie;
+        this.description = description;
         this.price = price;
         this.number = number;
-        this.mini_opisanie = mini_opisanie;
+        this.miniDescription = miniDescription;
     }
 
     public Drawable getImage() {
         return image;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setImage(Drawable image) {
         this.image = image;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getOpisanie() {
-        return opisanie;
+    public String getDescription() {
+        return description;
     }
 
-    public void setOpisanie(String opisanie) {
-        this.opisanie = opisanie;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPrice() {
@@ -59,12 +60,12 @@ public class OpisanieClass {
         this.number = number;
     }
 
-    public String getMini_opisanie() {
-        return mini_opisanie;
+    public String getMiniDescription() {
+        return miniDescription;
     }
 
-    public void setMini_opisanie(String mini_opisanie) {
-        this.mini_opisanie = mini_opisanie;
+    public void setMiniDescription(String miniDescription) {
+        this.miniDescription = miniDescription;
     }
 }
 

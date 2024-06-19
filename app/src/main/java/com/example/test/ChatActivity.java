@@ -1,6 +1,7 @@
 package com.example.test;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity {
-    ImageView ava_message, sendingImageView;
+    ImageView ava_message, sendingImageView,go_back;
     TextView nick_message, time_message;
     ListView chatListView;
     EditText chatEditText;
@@ -36,6 +37,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
         auth = new AuthClass(getApplicationContext());
 
         chat = new ArrayList<>();
@@ -49,6 +51,7 @@ public class ChatActivity extends AppCompatActivity {
         readingFunctional();
         deleteAlertDialog();
         editAlertDialog();
+        backListner();
     }
 
     private void editAlertDialog() {
@@ -64,6 +67,7 @@ public class ChatActivity extends AppCompatActivity {
         sendingImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (!chatEditText.getText().toString().isEmpty()) {
                     String massage = chatEditText.getText().toString();
                     String key = messagesReference.push().getKey();
@@ -76,11 +80,13 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void readingFunctional() {
+
         chatListView.setAdapter(adapter);
         messagesReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 chat.clear();
                 for (DataSnapshot msgSnapshot : snapshot.getChildren()) {
                     MessageClass message = msgSnapshot.getValue(MessageClass.class);
@@ -100,14 +106,17 @@ public class ChatActivity extends AppCompatActivity {
         chatListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
                 AlertDialog.Builder deleteDialog = new AlertDialog.Builder(ChatActivity.this);
                 MessageClass pickedMessage = chat.get(position);
                 String text = "сообщение:" + pickedMessage.getMessage();
                 deleteDialog.setTitle("вы действительно хотите удалить сообщение?");
                 deleteDialog.setMessage(text);
                 deleteDialog.setPositiveButton("удалить", new DialogInterface.OnClickListener() {
+
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         messagesReference.child(pickedMessage.getKey()).removeValue();
                     }
                 });
@@ -117,8 +126,21 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
+        private void backListner () {
+
+            findViewById(R.id.go_back).setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(ChatActivity.this, ChatListActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
     private void defineViews() {
+
         ava_message = findViewById(R.id.ava_message);
         sendingImageView = findViewById(R.id.sendingImageView);
         nick_message = findViewById(R.id.nick_message);

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DescriptionActivity"
+    android:background="#292929"
+    android:layout_centerInParent="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_from_the_top"
+        android:orientation="horizontal"
+        android:background="#1C2120">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/messages"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="360sp"
+            android:layout_marginBottom="20sp"
+            app:tint="#E2E2E5"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menu_from_the_top"
+        android:layout_above="@id/menu_from_the_bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageViewanimalfoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true">
+
+                    <ImageView
+                        android:id="@+id/liked_publication"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/heart111"
+                        app:tint="#E2E2E5"
+                        android:padding="10dp"
+                        android:layout_alignParentRight="true"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textViewnazvanie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#E6E6E6"
+                android:textAlignment="center"
+                android:textSize="28dp"
+                android:layout_margin="20dp"
+                android:text="название"/>
+
+            <TextView
+                android:id="@+id/textViewopisanie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_margin="20dp"
+                android:textColor="#E6E6E6"
+                android:text="описание"/>
+
+            <TextView
+                android:id="@+id/textViewprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="цена"
+                android:textColor="#E6E6E6"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/textViewnumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_margin="20dp"
+                android:text="номер"
+                android:textColor="#E6E6E6" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ButtonСallOpisanie"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="230dp"
+                    android:background="@drawable/button">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:text="Позвонить"
+                        android:textColor="#D6D6D6"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ButtonChatOpisanie"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="25dp"
+                    android:background="@drawable/button">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:text="Перейти в чат"
+                        android:textColor="#D6D6D6"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_from_the_bottom"
+            android:orientation="horizontal"
+            android:background="#1C2120"
+            android:layout_alignParentBottom="true">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="360sp"
+                app:tint="#E2E2E5"
+                android:layout_alignParentRight="true"/>
+            <ImageView
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_search_24"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="270sp"
+                app:tint="#E2E2E5"
+                android:layout_alignParentRight="true"/>
+            <ImageView
+                android:id="@+id/To_add_an_advert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add_square"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="190sp"
+                app:tint="#E2E2E5"
+                android:layout_alignParentRight="true"/>
+            <ImageView
+                android:id="@+id/liked_it_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/heart"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="110sp"
+                app:tint="#E2E2E5"
+                android:layout_alignParentRight="true"/>
+            <ImageView
+                android:id="@+id/User_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profile_user"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                app:tint="#E2E2E5"
+                android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    </RelativeLayout>
+

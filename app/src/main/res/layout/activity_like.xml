@@ -16,6 +16,7 @@
         android:orientation="horizontal"
         android:background="#1C2120">
         <ImageView
+            android:id="@+id/message_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/messages"
@@ -45,21 +46,11 @@
         android:gravity="center"
         android:layout_below="@id/menu_from_the_top">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Понравившиеся публикации"
-            android:layout_centerHorizontal="true"
-            android:textColor="#E2E2E5"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20sp" />
-
         <GridView
             android:id="@+id/gv"
             android:layout_width="393dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:numColumns="2"
             android:scrollbars="none"

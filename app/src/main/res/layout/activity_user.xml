@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="130dp"
+            android:layout_marginStart="140dp"
             android:layout_marginTop="110dp"
             android:layout_marginBottom="5dp"
             android:text="Профиль"
@@ -75,21 +75,21 @@
             android:text="ник"
             android:textColor="#E2E2E5"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="130dp"
+            android:layout_marginStart="140dp"
             android:layout_marginTop="150dp"
             android:layout_marginBottom="5dp"/>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/arrow_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/background_search"
-        android:padding="5dp"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="280dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginHorizontal="20dp">
+        android:background="@drawable/background_search"
+        android:orientation="vertical"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/change_EMAIL"
@@ -98,26 +98,26 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:text="Изменить EMAIL"
+            android:textSize="17dp"
+            android:text="Изменить email"
             android:textColor="#E2E2E5" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="310dp"
-            android:layout_marginBottom="5dp"
             android:src="@drawable/arrow_right_2"
-            app:tint="#E2E2E5"/>
-    </LinearLayout>
+            app:tint="#E2E2E5" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/arrow_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="@drawable/background_search"
         android:padding="5dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="370dp"
         android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="20dp">
 
@@ -128,28 +128,26 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:textSize="17dp"
             android:text="Изменить пароль"
             android:textColor="#E2E2E5" />
 
         <ImageView
-
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="310dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="5dp"
             android:src="@drawable/arrow_right_2"
             app:tint="#E2E2E5"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/arrow_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="@drawable/background_search"
         android:padding="5dp"
-        android:layout_marginTop="510dp"
+        android:layout_marginTop="460dp"
         android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="20dp">
 
@@ -160,28 +158,26 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:textSize="17dp"
             android:text="Изменить номер"
             android:textColor="#E2E2E5" />
 
         <ImageView
-
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="310dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="5dp"
             android:src="@drawable/arrow_right_2"
             app:tint="#E2E2E5"/>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/arrow_publications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
         android:orientation="vertical"
         android:background="@drawable/background_search"
         android:padding="5dp"
-        android:layout_marginTop="630dp"
+        android:layout_marginTop="550dp"
         android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="20dp">
 
@@ -192,19 +188,77 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:textSize="17dp"
             android:text="Ваши публикации"
             android:textColor="#E2E2E5" />
 
         <ImageView
-
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="310dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="5dp"
             android:src="@drawable/arrow_right_2"
             app:tint="#E2E2E5"/>
-    </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/arrow_exit"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="@drawable/background_search"
+        android:padding="5dp"
+        android:layout_marginTop="640dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="17dp"
+            android:text="Выход из аккаунта"
+            android:textColor="#E2E2E5" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="310dp"
+            android:src="@drawable/arrow_right_2"
+            app:tint="#E2E2E5"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/arrow_about_us"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="@drawable/background_search"
+        android:padding="5dp"
+        android:layout_marginTop="730dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/about_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="17dp"
+            android:text="О нас"
+            android:textColor="#E2E2E5" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="310dp"
+            android:src="@drawable/arrow_right_2"
+            app:tint="#E2E2E5"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

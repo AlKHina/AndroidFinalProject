@@ -1,22 +1,25 @@
 package com.example.test;
 
 public class CarClass {
+
     private String key;
     private String ownerKey;
     private String nameCar;
     private String descriptionCar;
     private String priceCar;
     private String numberUser;
-    private String foto;
+    private String photo;
+    private String miniDescription;
 
-    public CarClass(String key, String ownerKey, String nameCar, String descriptionCar, String priceCar, String numberUser, String foto) {
+    public CarClass(String key, String ownerKey, String nameCar, String descriptionCar, String priceCar, String numberUser, String photo, String miniDescription) {
         this.key = key;
         this.ownerKey = ownerKey;
         this.nameCar = nameCar;
         this.descriptionCar = descriptionCar;
         this.priceCar = priceCar;
         this.numberUser = numberUser;
-        this.foto = foto;
+        this.photo = photo;
+        this.miniDescription = miniDescription;
     }
 
     public String getKey() {
@@ -67,11 +70,19 @@ public class CarClass {
         this.numberUser = numberUser;
     }
 
-    public String getFoto() {
-        return foto;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getMiniDescription() {
+        return miniDescription;
+    }
+
+    public void setMiniDescription(String miniDescription) {
+        this.miniDescription = miniDescription;
     }
 }

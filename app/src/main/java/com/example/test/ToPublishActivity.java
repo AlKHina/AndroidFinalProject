@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -29,13 +30,15 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class ToPublishActivity extends AppCompatActivity {
-    private EditText EditTextNameCar,EditTextDescriptionCar,EditTextPriceCar,EditTextNumber;
-    private Button ButtonPublish;
-    private ImageView foto;
+
+    private EditText EditTextNameCar,EditTextDescriptionCar,EditTextPriceCar,EditTextNumber,EditTextShortDescriptionCar;
+    private ImageView photo;
+    private LinearLayout ButtonPublish;
     private AuthClass auth;
     DatabaseReference db;
     String fotoString;
     DatabaseReference publications;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,23 +48,25 @@ public class ToPublishActivity extends AppCompatActivity {
         db = FirebaseDatabase.getInstance().getReference();
         publications = db.child("publications");
 
-        foto = findViewById(R.id.foto);
+        photo = findViewById(R.id.ImageViewPhoto);
         ButtonPublish = findViewById(R.id.ButtonPublish);
         EditTextNameCar = findViewById(R.id.EditTextNameCar);
         EditTextDescriptionCar = findViewById(R.id.EditTextDescriptionCar);
         EditTextPriceCar = findViewById(R.id.EditTextPriceCar);
         EditTextNumber = findViewById(R.id.EditTextNumber);
+        EditTextShortDescriptionCar = findViewById(R.id.EditTextShortDescriptionCar);
+
         transition();
 
         Intent returnIntent = getIntent();
-        fotoString = returnIntent.getStringExtra("foto");
+        fotoString = returnIntent.getStringExtra("photo");
         byte[] decodedString = android.util.Base64.decode(fotoString, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        foto.setImageBitmap(decodedByte);
+        photo.setImageBitmap(decodedByte);
     }
     private void transition() {
-        Button buttonpublish = findViewById(R.id.ButtonPublish);
-        buttonpublish.setOnClickListener(new View.OnClickListener() {
+        LinearLayout buttonPublish = findViewById(R.id.ButtonPublish);
+        buttonPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -70,6 +75,7 @@ public class ToPublishActivity extends AppCompatActivity {
                 String descriptionCar = EditTextDescriptionCar.getText().toString();
                 String priceCar = EditTextPriceCar.getText().toString();
                 String numberUser = EditTextNumber.getText().toString();
+                String miniDescription = EditTextShortDescriptionCar.getText().toString();
 
                 if (nameCar.isEmpty()){
                     isEverythingOK = false;
@@ -83,15 +89,17 @@ public class ToPublishActivity extends AppCompatActivity {
                 } else if (numberUser.isEmpty()) {
                     isEverythingOK = false;
                     EditTextNumber.setError("Это поле осталось пустым");
+                } else if (miniDescription.isEmpty()) {
+                    isEverythingOK = false;
+                    EditTextShortDescriptionCar.setError("Это поле осталось пустым");
                 }
 
                 if (isEverythingOK) {
                     String key = publications.child(auth.getKey()).push().getKey();
-                    CarClass car = new CarClass(key, auth.getKey(), nameCar,descriptionCar, priceCar,numberUser,fotoString);
+                    CarClass car = new CarClass(key, auth.getKey(), nameCar,descriptionCar, priceCar,numberUser,fotoString,miniDescription);
                     publications.child(auth.getKey()).child(key).setValue(car).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-
                             finish();
                         }
                     });

@@ -1,6 +1,7 @@
 package com.example.test;
 
 public class MessageClass {
+
     private String key;
     private String message;
     private long time;

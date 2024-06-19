@@ -3,16 +3,12 @@ package com.example.test;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText editTextNick, editTextLogin, editTextPassword, editTextRepeatPassword;
-    private Button buttonCreateAkk;
+    private LinearLayout buttonCreateAkk;
     private TextView textViewEnterAkk;
     private AuthClass auth;
 
@@ -43,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         textViewEnterAkk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, SignLnActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -54,36 +50,38 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean isEverythingOK = true;
 
-                String nickname = editTextNick.getText().toString();
-                String login = editTextLogin.getText().toString();
-                String password = editTextPassword.getText().toString();
+                String nick = editTextNick.getText().toString();
+                String email = editTextLogin.getText().toString();
+                String pass = editTextPassword.getText().toString();
+                String number ="";
+                String ava = "";
                 String repeatPassword = editTextRepeatPassword.getText().toString();
 
-                if (nickname.isEmpty()) {
+                if (nick.isEmpty()) {
                     isEverythingOK = false;
                     editTextNick.setError("Это поле осталось пустым");
-                } else if (login.isEmpty()) {
+                } else if (email.isEmpty()) {
                     isEverythingOK = false;
                     editTextLogin.setError("Это поле осталось пустым");
-                } else if (password.isEmpty()) {
+                } else if (pass.isEmpty()) {
                     isEverythingOK = false;
                     editTextPassword.setError("Это поле осталось пустым");
                 } else if (repeatPassword.isEmpty()) {
                     isEverythingOK = false;
                     editTextRepeatPassword.setError("Это поле осталось пустым");
-                } else if (password.length() < 8) {
+                } else if (pass.length() < 8) {
                     isEverythingOK = false;
                     editTextPassword.setError("Пароль должен состоять не менее, чем из 8 символов");
-                } else if (!password.matches("\\w+")) {
+                } else if (!pass.matches("\\w+")) {
                     isEverythingOK = false;
                     editTextPassword.setError("Пароль должен состоять только из латинских букв, символов нижнего подчёркивания или цифр");
-                } else if (!repeatPassword.equals(password)) {
+                } else if (!repeatPassword.equals(pass)) {
                     isEverythingOK = false;
                     editTextRepeatPassword.setError("Пароли не совпадают");
                 }
 
                 if (isEverythingOK) {
-                    Query query = FirebaseDatabase.getInstance().getReference().child("accounts").orderByChild("login").equalTo(login);
+                    Query query = FirebaseDatabase.getInstance().getReference().child("accounts").orderByChild("login").equalTo(email);
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,11 +90,11 @@ public class SignUpActivity extends AppCompatActivity {
                             } else {
                                 DatabaseReference accounts = FirebaseDatabase.getInstance().getReference().child("accounts");
                                 String key = accounts.push().getKey();
-                                UserClass user = new UserClass(nickname, login, password, key);
+                                UserClass user = new UserClass(key, nick, email, number,pass,ava);
                                 accounts.child(key).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-                                        auth.setUsername(nickname);
+                                        auth.setUsername(nick);
                                         auth.setUser(user);
                                         auth.setKey(key);
                                         Intent intent = new Intent(SignUpActivity.this, MainActivity.class);

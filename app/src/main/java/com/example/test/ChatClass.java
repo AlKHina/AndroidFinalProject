@@ -1,6 +1,7 @@
 package com.example.test;
 
 public class ChatClass {
+
     private String key;
     private String ownerKey;
     private String customerKey;

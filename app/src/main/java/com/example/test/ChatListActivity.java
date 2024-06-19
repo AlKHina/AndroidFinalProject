@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ChatListActivity extends AppCompatActivity {
+
     ListView lv;
     ImageView arrow;
     ArrayList<ChatClass> chat;
@@ -47,23 +48,33 @@ public class ChatListActivity extends AppCompatActivity {
         messagesReference = db.child("chat");
 
         chatlist();
+        backListner();
 
     }
 
     private void chatlist() {
-        adapter = new ChatAdapter(this,chat);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            adapter = new ChatAdapter(this,chat);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent intent = new Intent(ChatListActivity.this,ChatActivity.class);
+                    ChatClass pickedchat= chat.get(position);
+                    intent.putExtra("chatKey",pickedchat.getChatKey());
+                    startActivity(intent);
+                }
+            });
+    }
+    private void backListner () {
+
+        findViewById(R.id.arrow).setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ChatListActivity.this,ChatActivity.class);
-                ChatClass pickedAnimal = chat.get(position);
-                intent.putExtra("name", pickedAnimal.getNick());
-                intent.putExtra("message", pickedAnimal.getMessage());
-                Bitmap bitmap= ((BitmapDrawable)pickedAnimal.getAva()).getBitmap();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG,70,stream);
-                String imgString = android.util.Base64.encodeToString(stream.toByteArray(), Base64.NO_WRAP);
-                intent.putExtra("ava", imgString);
+            public void onClick(View view) {
+
+                Intent intent = new Intent(ChatListActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

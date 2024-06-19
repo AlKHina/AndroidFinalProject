@@ -6,12 +6,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignLnActivity"
+    tools:context=".SignInActivity"
     android:background="#292929" >
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@drawable/sign_up_car_1"
         android:adjustViewBounds="true"/>
 
     <LinearLayout
@@ -28,47 +29,60 @@
         android:layout_centerHorizontal="true"
         android:padding="6dp"
         android:text="Вход в аккаунт"
-        android:textColor="#E6E6E6"
+        android:layout_marginBottom="30dp"
+        android:textColor="#D6D6D6"
         android:textSize="24sp"
+        android:layout_marginTop="90dp"
         android:textStyle="bold" />
 
         <EditText
             android:id="@+id/EditTextEmail"
-            android:layout_width="match_parent"
+            android:layout_width="292dp"
             android:layout_height="wrap_content"
             android:hint="login"
             android:layout_marginTop="15dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
+            android:textColor="#D6D6D6"
+            android:textColorHint="#B2B2B2"
             android:background="@drawable/edit_text_bg"/>
 
     <EditText
         android:id="@+id/EditTextPassword"
-        android:layout_width="match_parent"
+        android:layout_width="292dp"
         android:layout_height="wrap_content"
         android:hint="Пароль"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
+        android:textColor="#D6D6D6"
+        android:textColorHint="#B2B2B2"
         android:background="@drawable/edit_text_bg"/>
 
-        <Button
+        <LinearLayout
             android:id="@+id/ButtonBtnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Вход в аккаунт"
-            android:layout_marginTop="40dp"
-            android:outlineAmbientShadowColor="#4B4B4D"/>
+            android:layout_width="292dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/button"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вход в аккаунт"
+                android:textColor="#D6D6D6"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/TextViewForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Забыли пароль?"
-            android:textColor="#ECECEC"
-            android:layout_marginTop="20dp" />
+            android:textColor="#D6D6D6"
+            android:layout_marginTop="30dp" />
 
     </LinearLayout>
     </RelativeLayout>

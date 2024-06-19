@@ -1,22 +1,31 @@
 package com.example.test;
 
 public class UserClass {
+
+    private String key;
     private String nick;
     private String email;
     private String number;
     private String pass;
     private String ava;
-    private String key;
 
     public UserClass() {
     }
 
-    public UserClass(String nick, String email, String number, String pass, String ava, String key) {
+    public UserClass(String key, String nick, String email, String number, String pass, String ava) {
+        this.key = key;
         this.nick = nick;
         this.email = email;
         this.number = number;
         this.pass = pass;
         this.ava = ava;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
         this.key = key;
     }
 
@@ -58,13 +67,5 @@ public class UserClass {
 
     public void setAva(String ava) {
         this.ava = ava;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 }

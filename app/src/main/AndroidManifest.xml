@@ -30,7 +30,7 @@
             android:name=".AddingPublicationsActivity"
             android:exported="true" />
         <activity
-            android:name=".OpisanieActivity"
+            android:name=".DescriptionActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -60,7 +60,7 @@
             android:name=".SearchActivity"
             android:exported="true" />
         <activity
-            android:name=".SignLnActivity"
+            android:name=".SignInActivity"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"

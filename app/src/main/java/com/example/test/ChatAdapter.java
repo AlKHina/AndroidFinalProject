@@ -17,11 +17,13 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class ChatAdapter extends ArrayAdapter<ChatClass> {
+
     Context context;
     ArrayList<ChatClass> chat;
     View v;
 
     public ChatAdapter(@NonNull Context context, ArrayList<ChatClass> chats) {
+
         super(context, R.layout.item_chat, chats);
         this.context = context;
         this.chat = chats;
@@ -30,6 +32,7 @@ public class ChatAdapter extends ArrayAdapter<ChatClass> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
         ChatClass chats = chat.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         v = inflater.inflate(R.layout.item_chat, null, false);
